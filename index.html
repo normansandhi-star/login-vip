@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login VIP WL Bio-Control</title>
+
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f8fb;
+  margin: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.button {
+  margin-top: 15px;
+  padding: 12px;
+  background: #7cc6e6;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 12px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div class="container" id="loginBox">
+  <h2>🔐 Login VIP</h2>
+  <p>Masukkan Member ID Anda</p>
+
+  <input type="text" id="memberId" placeholder="Contoh: VIP-001">
+  <div class="button" onclick="login()">Masuk</div>
+
+  <p id="error" style="color:red;"></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" style="display:none;">
+
+  <div class="card">
+    <h2>👑 Dashboard VIP</h2>
+    <p id="nama"></p>
+    <p id="status"></p>
+  </div>
+
+  <div class="card">
+    <h3>📊 Monitoring</h3>
+    <p>Suhu: 29°C</p>
+    <p>Kelembaban: 65%</p>
+  </div>
+
+</div>
+
+<script>
+
+// DATABASE SEDERHANA
+let members = [
+  { id: "VIP-001", nama: "Pak Budi", level: "Gold" },
+  { id: "VIP-002", nama: "Pak Andi", level: "Platinum" }
+];
+
+// LOGIN FUNCTION
+function login() {
+
+  let input = document.getElementById("memberId").value;
+  let found = members.find(m => m.id === input);
+
+  if (found) {
+  { id: "VIP-001", nama: "Pak Budi", level: "Gold" }
+  
+  if (found.level === "Platinum") {
+  // tampilkan fitur AI
+}
+
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    document.getElementById("nama").innerHTML =
+      "Halo " + found.nama;
+
+    document.getElementById("status").innerHTML =
+      "Level Member: " + found.level;
+
+  } else {
+    document.getElementById("error").innerText =
+      "Member tidak ditemukan!";
+  }
+  localStorage.setItem("vipLogin", input);
+
+}
+
+</script>
+
+</body>
+</html>
